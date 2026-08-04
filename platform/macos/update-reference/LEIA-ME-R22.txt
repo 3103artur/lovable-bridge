@@ -1,0 +1,40 @@
+LOVABLE BRIDGE v1.6.0 R22 - ATUALIZACAO PARA macOS
+====================================================
+
+Esta e uma atualizacao cumulativa para uma instalacao existente.
+Ela nao baixa ou reinstala Node, Git, GitHub CLI, Bun, Codex, Antigravity, OpenCode ou Ripgrep.
+
+PRESERVA
+- Perfis e projetos
+- Logins do GitHub, Codex e Antigravity
+- Chave e modelo do OpenRouter
+- Alteracoes locais pendentes
+- Configuracoes atuais
+
+PRINCIPAIS RECURSOS
+- Idioma POR/ENG salvo por perfil
+- Modos Automatic, Visual & content, SEO & site health, Forms & email e Advanced
+- Roteamento inteligente dos modelos Codex disponiveis
+- Auditorias somente leitura sem exigir alteracao de arquivos
+- Safety Guard dinamico para SEO, formularios/e-mail e tarefas avancadas
+- Selecao visual, movimento e exclusao da R19
+- Fluxo seguro de publicacao e recuperacao
+
+COMO APLICAR
+1. Extraia completamente o ZIP.
+2. Clique com o botao direito em "Lovable Bridge Updater R22.app".
+3. Escolha Open/Abrir.
+4. Aguarde a janela do Terminal mostrar a conclusao.
+5. Abra chrome://extensions e clique em Reload/Recarregar.
+6. Feche e abra novamente o painel lateral.
+
+STATUS ESPERADO
+Companion 1.6.0 R22 connected.
+
+ALTERNATIVA
+Caso o aplicativo nao abra, clique com o botao direito em
+"ABRIR-ATUALIZACAO-R22.command" e escolha Open/Abrir.
+
+LOG
+Se ocorrer erro, o arquivo abaixo sera salvo na Mesa:
+LovableBridge-R22-Update.log

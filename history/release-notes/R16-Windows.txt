@@ -1,0 +1,19 @@
+LOVABLE BRIDGE v1.6.0 - HOTFIX R16
+
+CORRECOES:
+1. O Codex passa a iniciar pelo Patch Relay em modo somente leitura.
+2. A edicao direta gravavel fica reservada apenas para contingencia.
+3. Erros transitorios de ferramentas nao aparecem como falha enquanto o Codex ainda esta trabalhando.
+4. O Ripgrep de compatibilidade aceita padroes que comecam com hifen e padroes contendo |.
+5. A mensagem de sucesso da alteracao nao e mais substituida automaticamente por "Preview verificado".
+6. O preview continua sendo atualizado automaticamente depois da alteracao.
+
+COMO APLICAR:
+- Nao execute o Cleanup.
+- Extraia o ZIP inteiro.
+- Execute APLICAR-HOTFIX-R16.cmd.
+- Abra chrome://extensions e clique em Recarregar.
+- Feche e abra novamente o painel lateral.
+
+O hotfix cria um backup automatico em:
+%LOCALAPPDATA%\LovableBridgeNative\Backups\R16-...

@@ -1,0 +1,43 @@
+LOVABLE BRIDGE v1.6.0 R21 — MODO BACK-END E FULL-STACK — WINDOWS
+
+Esta atualização é cumulativa sobre a instalação existente e não baixa nem reinstala ferramentas.
+Ela preserva perfis, projetos, logins, chaves e alterações pendentes.
+
+NOVO SELETOR DE MODO
+- Automático: identifica o tipo do pedido.
+- Front-end: páginas, componentes, imagens, textos, estilos e responsividade.
+- Back-end: APIs, Supabase, Edge Functions, banco, migrations, RLS, autenticação, Storage e serviços.
+- Full-stack: coordena front-end e back-end na mesma tarefa.
+
+SAFETY GUARD R21
+- Até 40 arquivos relacionados em tarefas Back-end ou Full-stack.
+- Permite criar arquivos de API, server, functions, Supabase, Prisma, services, types, testes e migrations SQL.
+- Continua bloqueando arquivos .env reais, segredos, package.json, lockfiles, deploy, .git e arquivos fora do projeto.
+- .env.example/.env.sample podem conter apenas campos vazios ou placeholders claramente fictícios.
+- Migrations destrutivas são bloqueadas sem pedido explícito.
+- Migrations podem ser criadas, mas nunca são aplicadas automaticamente.
+- Build automático e rollback continuam obrigatórios.
+
+LIMITAÇÕES DESTA PRIMEIRA VERSÃO BACK-END
+- Não instala dependências e não altera package.json ou lockfiles.
+- Não aplica migrations em banco local ou produção.
+- Não executa comandos destrutivos nem acessa serviços de produção.
+- Quando uma chave for necessária, o Bridge deve criar apenas o nome em .env.example e informar o que precisa ser configurado manualmente.
+
+TAMBÉM INCLUI
+- Todas as funções da R19 e R20.
+- Movimento visual, setas, Delete/Backspace e linhas-guia.
+- Limite geral de 20 arquivos.
+- Status: Companion 1.6.0 R21 conectado.
+
+COMO APLICAR
+1. Extraia o ZIP inteiro.
+2. Execute APLICAR-HOTFIX-R21.cmd.
+3. Abra chrome://extensions e clique em Recarregar.
+4. Feche e abra novamente o painel.
+5. Escolha o Modo de trabalho antes de enviar o comando.
+
+SUGESTÃO PARA O MOHIT
+- Use Back-end para banco, APIs, autenticação, Supabase e integrações.
+- Use Full-stack quando a mesma tarefa também precisar alterar formulário, dashboard ou interface.
+- Revise migrations e variáveis de ambiente antes de enviar ao Lovable.

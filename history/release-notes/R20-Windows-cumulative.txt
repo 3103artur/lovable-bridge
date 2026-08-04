@@ -1,0 +1,30 @@
+LOVABLE BRIDGE v1.6.0 R20 — ATUALIZACAO CUMULATIVA Windows
+
+Esta atualizacao nao instala nem baixa ferramentas.
+Ela preserva perfis, projetos, logins, chaves e alteracoes pendentes.
+
+CORRECAO R20
+- O limite de arquivos para pedidos classificados como "general" passa de 8 para 20.
+- O limite nao foi removido: o Safety Guard continua bloqueando arquivos protegidos,
+  exclusoes/renomes inesperados, perda estrutural, alteracoes excessivas de linhas e build com erro.
+- Pedidos globais de cor, fonte, estilo e texto continuam usando seus limites adaptativos proprios.
+
+TAMBEM INCLUI AS FUNCOES DA R19
+- Botao Mover na barra da selecao visual.
+- Arraste livre no Preview.
+- Setas movem 1 px; Shift + seta move 10 px.
+- Enter confirma; Esc cancela; Ctrl/Cmd + Z desfaz.
+- Delete/Backspace marca o elemento para exclusao com confirmacao.
+- Linhas-guia de alinhamento.
+- O botao Aplicar posicao muda para Aplicar movimento ou Aplicar exclusao.
+- Status: Companion 1.6.0 R20 conectado.
+
+COMO APLICAR
+1. Extraia o ZIP inteiro.
+2. Execute APLICAR-HOTFIX-R20.cmd.
+3. Abra chrome://extensions e clique em Recarregar.
+4. Recarregue a aba do Preview antes do primeiro teste.
+5. Repita o comando que havia sido rejeitado.
+
+OBSERVACAO
+Se uma tarefa alterar mais de 20 arquivos, ela ainda sera rejeitada para evitar mudancas amplas acidentais.

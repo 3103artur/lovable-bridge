@@ -1,0 +1,22 @@
+LOVABLE BRIDGE v1.6.0 R19 — ATUALIZACAO Windows
+
+Esta atualizacao nao instala nem baixa ferramentas.
+Ela preserva perfis, projetos, logins, chaves e alteracoes pendentes.
+
+NOVIDADES
+- Botao Mover na barra da selecao visual.
+- Arraste livre no Preview.
+- Setas movem 1 px; Shift + seta move 10 px.
+- Enter confirma; Esc cancela; Cmd + Z desfaz.
+- Delete/Backspace marca o elemento para exclusao com confirmacao.
+- Linhas-guia de alinhamento.
+- O botao Aplicar posicao muda para Aplicar movimento ou Aplicar exclusao.
+- O Companion passa a exibir: Companion 1.6.0 R19 conectado.
+
+COMO APLICAR
+1. Extraia o ZIP inteiro.
+2. Execute APLICAR-HOTFIX-R19.cmd.
+3. Abra chrome://extensions e clique em Recarregar.
+4. Recarregue a aba do Preview antes do primeiro teste.
+
+O movimento visual e uma referencia. Ao aplicar, o Codex deve converter a posicao em Grid, Flexbox, ordem, margens, gap ou hierarquia responsiva, evitando coordenadas fixas.

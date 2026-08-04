@@ -1,0 +1,18 @@
+LOVABLE BRIDGE v1.6.0 - HOTFIX R15
+
+CORRECOES:
+- Corrige a ordem das flags do Codex: sandbox e aprovacao agora sao definidos antes do comando exec.
+- Usa workspace-write com approval=never somente dentro da pasta atual do projeto.
+- Se o Windows/Codex ainda bloquear a edicao direta, o Bridge continua automaticamente pelo Patch Relay seguro.
+- Valida a pasta local e a permissao de escrita antes de gastar uso do Codex.
+- Impede e remove o arquivo sentinela vazio PROJECT_NOT_FOUND.
+- Mantem Safety Guard, build automatico, historico, preview e rollback.
+
+COMO APLICAR:
+1. Feche o painel lateral do Lovable Bridge.
+2. Extraia o ZIP inteiro.
+3. Execute APLICAR-HOTFIX-R15.cmd.
+4. Abra novamente o painel e repita o comando.
+
+Nao execute o Cleanup.
+Nao desinstale os motores.

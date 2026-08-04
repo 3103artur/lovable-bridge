@@ -1,0 +1,21 @@
+{
+  "product": "Lovable Bridge",
+  "codeVersion": "1.6.0",
+  "release": "R22",
+  "channel": "master-snapshot",
+  "baselineStatus": "user-confirmed-working",
+  "extensionManifestVersion": 3,
+  "minimumChromeVersion": "120",
+  "sourceLayout": "common-plus-platform-overlays",
+  "supportedTargets": [
+    "windows-x64",
+    "macos-x64",
+    "macos-arm64"
+  ],
+  "testedPackagesReported": [
+    "R22-Windows-Language-Smart-Routing-Technical-Ops",
+    "R22-macOS-Language-Smart-Routing-Technical-Ops"
+  ],
+  "rollbackBaseline": "R21",
+  "notes": "Fonte oficial congelada da R22 antes da criacao do repositorio e do sistema de atualizacao remota. Nao e um instalador."
+}

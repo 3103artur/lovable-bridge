@@ -1,0 +1,78 @@
+LOVABLE BRIDGE v1.6.0 R22 — IDIOMA, ECONOMIA DO CODEX E OPERACOES TECNICAS — WINDOWS
+
+Esta atualizacao e cumulativa sobre a instalacao existente.
+Ela NAO baixa nem reinstala Node, Git, GitHub CLI, Codex, Antigravity, OpenCode, Bun ou Ripgrep.
+Perfis, projetos, logins, chaves, historico e alteracoes pendentes sao preservados.
+
+1. SELETOR MANUAL DE IDIOMA
+- Novo seletor POR / ENG no topo da interface.
+- A escolha e salva por perfil.
+- PT-BR forca a interface em portugues.
+- EN-US forca a interface em ingles.
+- O idioma do site editado nao e alterado.
+- Logs tecnicos originais podem continuar no idioma retornado pela ferramenta, mas a interface e os resumos principais sao localizados.
+
+2. NOVOS MODOS DE TRABALHO
+- Automatico: classifica o pedido localmente, sem consumir Codex.
+- Visual e conteudo: textos, imagens, layout, estilos, acessibilidade e responsividade.
+- SEO e saude do site: links, redirects, canonicals, titles, metas, imagens, sitemap, robots, schema, performance e mobile.
+- Formularios e e-mail: formularios, Supabase, destinatarios, reply-to, dominio de envio, logs e testes.
+- Avancado: APIs, autenticacao, banco, migrations, RLS, webhooks, Storage e recursos tecnicos da R21.
+
+Os recursos amplos de back-end da R21 nao foram removidos. Eles foram reorganizados dentro do modo Avancado para nao poluir o fluxo principal do Mohit.
+
+3. AUDITORIA SEM ALTERAR ARQUIVOS
+Quando o pedido de SEO usa verbos como audit, review, analyze, find, identify, check ou list e nao pede explicitamente fix/add/implement/rewrite, o Codex trabalha em modo somente leitura.
+- Nenhum arquivo e modificado.
+- Safety Guard e build nao sao executados porque nao existe mudanca para validar.
+- O resultado e um relatorio estruturado.
+- O relatorio separa o que foi verificado localmente do que ainda depende de producao, DNS, analytics ou provedor de e-mail.
+
+4. ECONOMIA INTELIGENTE DO CODEX
+Novo seletor:
+- Automatico — economia inteligente
+- GPT-5.6 Luna
+- GPT-5.6 Terra
+- GPT-5.6 Sol
+
+No modo Automatico:
+- Luna e escolhido somente para alteracoes simples/localizadas e auditorias somente leitura, quando disponivel.
+- Terra e escolhido diretamente para tarefas amplas, multi-arquivo, formularios, e-mail, performance, SEO com correcoes, back-end ou pedidos incertos.
+- Sol nunca e escolhido automaticamente; ele e somente manual.
+- O Bridge nao envia o mesmo comando para varios modelos para “testar”.
+- Se Luna ou Sol estiver indisponivel na conta/CLI, o Bridge usa Terra somente quando o erro for especificamente de modelo indisponivel.
+- Uma falha de qualidade do Luna nao dispara automaticamente uma segunda tarefa cara. O usuario pode escolher Terra e reenviar conscientemente.
+
+A selecao de Luna e Sol requer Codex CLI 0.144.0 ou posterior. Em CLIs antigas, o seletor mostra Terra como opcao segura.
+
+5. PROMPTS PRE-FEITOS PARA O MOHIT
+A biblioteca recebe novos modelos:
+- Auditar links e redirects
+- Auditar SEO de todas as paginas
+- Auditar performance e mobile
+- Configurar formularios e e-mail
+
+6. SAFETY GUARD
+- Visual/conteudo mantem limites adaptativos existentes.
+- SEO com correcao: ate 25 arquivos relacionados.
+- Formularios e e-mail: ate 30 arquivos relacionados.
+- Avancado: ate 40 arquivos relacionados.
+- Arquivos .env reais, segredos, package.json, lockfiles, deploy e .git continuam bloqueados.
+- Migrations podem ser criadas somente quando pedidas, mas nunca sao aplicadas automaticamente.
+- DNS, entrega de e-mail e resultados de producao nao podem ser declarados como concluidos sem verificacao real.
+
+7. COMO APLICAR
+1. Extraia o ZIP inteiro.
+2. Execute APLICAR-HOTFIX-R22.cmd.
+3. Abra chrome://extensions.
+4. Clique em Recarregar no Lovable Bridge.
+5. Feche e abra novamente o painel lateral.
+6. Confirme: Companion 1.6.0 R22 conectado.
+
+ENGLISH QUICK START
+1. Extract the full ZIP.
+2. Run APLICAR-HOTFIX-R22.cmd.
+3. Open chrome://extensions and click Reload on Lovable Bridge.
+4. Reopen the side panel.
+5. Select ENG at the top.
+6. Use Automatic mode for normal work, SEO & site health for audits, Forms & email for submission/email flows, and Advanced only for APIs/database/auth/migrations.

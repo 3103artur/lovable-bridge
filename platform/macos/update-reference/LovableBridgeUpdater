@@ -1,0 +1,12 @@
+#!/bin/bash
+APP_CONTENTS="$(cd "$(dirname "$0")/.." && pwd)"
+RESOURCES="$APP_CONTENTS/Resources"
+LAUNCHER="$RESOURCES/ABRIR-ATUALIZACAO-R22.command"
+/usr/bin/xattr -dr com.apple.quarantine "$(cd "$APP_CONTENTS/.." && pwd)" >/dev/null 2>&1 || true
+/bin/chmod +x "$LAUNCHER" "$RESOURCES/apply-r22-macos.sh" >/dev/null 2>&1 || true
+if [ -x /usr/bin/open ]; then
+  /usr/bin/open -a Terminal "$LAUNCHER"
+else
+  /bin/bash "$LAUNCHER"
+fi
+exit 0

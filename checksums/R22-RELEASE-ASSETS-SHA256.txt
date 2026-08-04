@@ -1,0 +1,2 @@
+ae69fbeb569c8bec096543bb7a6db1d64ba6c9914d17955e028525754a88881a  LovableBridge-v1.6.0-R22-Windows-Language-Smart-Routing-Technical-Ops.zip
+c028861f0bcb2c954084307ba54d08ab5388cd0f484b8bf3c1326fa81965dde0  LovableBridge-v1.6.0-R22-macOS-Language-Smart-Routing-Technical-Ops.zip

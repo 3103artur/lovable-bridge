@@ -1,0 +1,33 @@
+LOVABLE BRIDGE v1.6.0 - HOTFIX CUMULATIVO R18 PARA macOS
+
+Este pacote e uma ATUALIZACAO da instalacao macOS existente.
+Ele nao instala e nao baixa nenhuma ferramenta.
+
+Preserva:
+- perfis e projetos;
+- logins do GitHub, Codex e Antigravity;
+- chave e modelos do OpenRouter/OpenCode;
+- alteracoes pendentes;
+- Codex, Antigravity, OpenCode, Node, Bun, GitHub CLI e Ripgrep instalados.
+
+Inclui em uma unica aplicacao:
+- R14/R15: correcoes do workspace do Codex, fallback seguro e PROJECT_NOT_FOUND;
+- R16: fluxo estavel do Codex, sintaxe segura do rg e preservacao da mensagem de resultado;
+- R17: recuperacao de rebase incompleto e envio ao Lovable com conciliacao segura de conflitos Git.
+
+COMO APLICAR
+1. Feche o painel lateral do Lovable Bridge.
+2. Extraia completamente o ZIP.
+3. Clique com o botao direito em ATUALIZAR-LOVABLE-BRIDGE-R18-macOS.command.
+4. Escolha Abrir.
+5. Ao terminar, abra chrome://extensions.
+6. Clique em Recarregar no Lovable Bridge.
+7. Abra novamente o painel.
+
+Nao execute o Cleanup e nao execute o instalador completo.
+
+Em caso de bloqueio do macOS:
+Ajustes do Sistema > Privacidade e Seguranca > Abrir Mesmo Assim.
+
+O atualizador cria backup em:
+~/Library/Application Support/LovableBridgeNative/Backups/R18-macOS-...

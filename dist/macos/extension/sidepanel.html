@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lovable Bridge</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <main id="app" class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">LOCAL • PERFIS ISOLADOS • GITHUB</p>
+        <h1>Lovable Bridge</h1>
+      </div>
+      <div class="topbar-actions">
+        <span id="connectionBadge" class="badge badge-off">Conectando</span>
+        <button id="collapsePanelBtn" class="collapse-button" title="Recolher painel" aria-label="Recolher painel">›</button>
+      </div>
+    </header>
+
+    <section id="profileBar" class="profile-bar hidden">
+      <div>
+        <span class="small-label">Perfil ativo</span>
+        <select id="profileSelect" class="profile-select"></select>
+      </div>
+      <button id="manageProfileBtn" class="button compact">Gerenciar</button>
+    </section>
+
+    <section id="offlineView" class="view hidden">
+      <div class="empty-state">
+        <div class="empty-icon">!</div>
+        <h2>Serviço local indisponível</h2>
+        <p>Inicie o Lovable Bridge no Windows e tente novamente.</p>
+        <button id="retryBtn" class="button primary">Tentar novamente</button>
+      </div>
+    </section>
+
+    <section id="onboardingView" class="view hidden">
+      <div class="empty-state">
+        <div class="empty-icon">+</div>
+        <h2>Crie seu primeiro perfil</h2>
+        <p>Cada perfil terá sua própria conta GitHub e uma pasta separada de projetos.</p>
+        <button id="firstProfileBtn" class="button primary">Criar perfil</button>
+      </div>
+    </section>
+
+    <section id="createProfileView" class="view hidden">
+      <button class="back-button" data-back="home">← Voltar</button>
+      <h2>Novo perfil</h2>
+      <p class="subtext">Use um nome fácil de reconhecer, como User.</p>
+      <div class="form-card">
+        <label>Nome do perfil</label>
+        <input id="profileNameInput" class="input" maxlength="50" placeholder="Ex.: User">
+        <label>Workspace do Lovable <span>(opcional)</span></label>
+        <input id="workspaceNameInput" class="input" maxlength="80" placeholder="Ex.: User's Portfolio">
+        <button id="createProfileBtn" class="button primary full">Criar e continuar</button>
+      </div>
+    </section>
+
+    <section id="connectView" class="view hidden">
+      <div class="empty-state">
+        <div class="empty-icon github-icon">GH</div>
+        <h2>Conecte o GitHub</h2>
+        <p id="connectProfileLabel">Este perfil ainda não possui uma conta GitHub.</p>
+        <button id="connectGithubBtn" class="button primary">Entrar com GitHub</button>
+        <p class="hint centered">A página de autorização será aberta automaticamente e o código será copiado.</p>
+      </div>
+    </section>
+
+    <section id="portfolioView" class="view hidden">
+      <div class="account-card">
+        <div>
+          <span class="small-label">GitHub deste perfil</span>
+          <strong id="githubAccount">—</strong>
+        </div>
+        <button id="refreshPortfolioBtn" class="icon-button" title="Atualizar">↻</button>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h2>Meus projetos</h2>
+          <p>Somente projetos deste perfil.</p>
+        </div>
+        <button id="addProjectBtn" class="button compact primary">+ Adicionar</button>
+      </div>
+      <div id="projectList" class="project-list"></div>
+    </section>
+
+    <section id="manageProfileView" class="view hidden">
+      <button class="back-button" data-back="home">← Voltar</button>
+      <h2>Gerenciar perfil</h2>
+      <div class="card profile-summary">
+        <span class="small-label">Perfil</span>
+        <strong id="manageProfileName">—</strong>
+        <span class="small-label spaced">Workspace Lovable</span>
+        <strong id="manageWorkspaceName">Não informado</strong>
+      </div>
+      <div class="card">
+        <h3>Conta GitHub</h3>
+        <p id="manageGithubStatus" class="subtext">—</p>
+        <button id="changeGithubBtn" class="button full">Trocar conta GitHub</button>
+        <button id="disconnectGithubBtn" class="button danger-soft full">Desconectar GitHub</button>
+      </div>
+      <div class="card">
+        <h3>Novo perfil</h3>
+        <button id="addAnotherProfileBtn" class="button full">+ Adicionar outro perfil</button>
+      </div>
+      <details class="danger-zone">
+        <summary>Remover perfil</summary>
+        <p class="hint">Os projetos locais e repositórios remotos serão preservados.</p>
+        <button id="deleteProfileBtn" class="button danger full">Remover este perfil</button>
+      </details>
+    </section>
+
+    <section id="addView" class="view hidden">
+      <button class="back-button" data-back="home">← Voltar</button>
+      <h2>Adicionar projeto</h2>
+      <p class="subtext">Os repositórios abaixo pertencem à conta do perfil ativo.</p>
+      <input id="repoSearch" class="input" placeholder="Buscar repositório...">
+      <div id="repoList" class="repo-list"></div>
+      <div id="projectForm" class="form-card hidden">
+        <label>Nome no portfólio</label>
+        <input id="displayNameInput" class="input" placeholder="Nome do site">
+        <label>Endereço do projeto no Lovable <span>(opcional)</span></label>
+        <div class="inline">
+          <input id="lovableUrlInput" class="input" placeholder="https://lovable.dev/projects/...">
+          <button id="useCurrentTabBtn" class="button compact">Usar aba</button>
+        </div>
+        <button id="prepareProjectBtn" class="button primary full">Preparar projeto</button>
+      </div>
+    </section>
+
+    <section id="projectView" class="view hidden project-view-compact">
+      <div class="project-nav-row">
+        <button class="back-button" data-back="home">← Portfólio</button>
+        <button id="projectRefreshBtn" class="icon-button compact-refresh" title="Atualizar projeto">↻</button>
+      </div>
+
+      <section class="project-summary-card">
+        <div class="project-identity">
+          <span id="projectRepo" class="small-label">—</span>
+          <h2 id="projectTitle">—</h2>
+        </div>
+        <div class="status-chips" aria-label="Status do projeto">
+          <span class="status-chip"><small>Branch</small><strong id="projectBranch">—</strong></span>
+          <span class="status-chip"><small>Alterações</small><strong id="projectChanges">—</strong></span>
+          <span class="status-chip"><small>GitHub</small><strong id="projectSync">—</strong></span>
+        </div>
+      </section>
+
+      <section class="card compact-card command-card">
+        <div class="command-title-row compact-title-row">
+          <h3>O que você quer alterar?</h3>
+          <button id="promptLibraryBtn" class="prompt-library-button" type="button" title="Prompts salvos">▦ Prompts</button>
+        </div>
+
+        <div class="engine-compact-row">
+          <label for="engineSelect">Motor</label>
+          <select id="engineSelect" class="engine-select">
+            <option value="codex">Codex Business</option>
+            <option value="antigravity">Antigravity</option>
+            <option value="opencode">OpenCode (experimental)</option>
+          </select>
+        </div>
+        <p id="engineHint" class="engine-hint compact-engine-hint">Motor pronto.</p>
+        <div id="codexSetupRow" class="opencode-setup-row compact-setup">
+          <button id="codexSetupBtn" class="button compact secondary" type="button">⚙ Configurar Codex Business</button>
+          <button id="codexVerifyBtn" class="button compact secondary" type="button">✓ Verificar login</button>
+        </div>
+        <div id="openCodeSetupRow" class="opencode-setup-row compact-setup open-code-setup hidden" hidden>
+          <button id="openCodeSetupBtn" class="button compact secondary" type="button">⚙ Configurar OpenRouter</button>
+          <select id="openCodeModelSelect" class="open-code-model-select" aria-label="Modelo gratuito do OpenCode" title="Escolha o modelo gratuito usado pelo OpenCode">
+            <option value="">Carregando modelos gratuitos...</option>
+          </select>
+          <button id="openCodeRefreshModelsBtn" class="button compact secondary open-code-refresh" type="button" title="Atualizar modelos gratuitos">↻</button>
+          <p id="openCodeModelHint" class="visually-hidden">Modelo gratuito selecionável via OpenRouter.</p>
+        </div>
+
+        <textarea id="agentPrompt" rows="5" placeholder="Descreva a alteração desejada..."></textarea>
+
+        <div id="mediaDropZone" class="media-drop-zone compact-media-zone">
+          <input id="mediaInput" type="file" hidden multiple accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml,image/avif,video/mp4,video/quicktime,video/webm,video/x-msvideo">
+          <div class="media-action-row">
+            <button id="attachMediaBtn" class="mini-action-button" type="button">📎 Anexar</button>
+            <button id="selectPreviewBtn" class="mini-action-button visual-select-button" type="button">◎ Selecionar no site</button>
+          </div>
+          <span id="mediaCounter" class="media-counter-chip">0/10</span>
+          <p>Você também pode arrastar arquivos para esta área.</p>
+        </div>
+        <div id="mediaList" class="media-list"></div>
+
+        <section id="visualSelectionPanel" class="visual-selection-panel hidden">
+          <div class="visual-selection-heading">
+            <div>
+              <strong id="visualSelectionCount">0 itens selecionados</strong>
+              <span id="visualSelectionPairStatus">Selecione qualquer elemento no preview.</span>
+              <span id="visualSelectionRouteStatus" class="visual-selection-route-status">Página: não identificada</span>
+            </div>
+            <button id="clearVisualSelectionBtn" class="text-button" type="button">Limpar</button>
+          </div>
+          <div id="visualSelectionList" class="visual-selection-list"></div>
+          <div class="visual-selection-actions">
+            <button id="applyVisualPositionBtn" class="button compact visual-apply-button" type="button">Aplicar posição</button>
+            <button id="validateVisualSelectionBtn" class="button compact" type="button">Validar página</button>
+            <label class="visual-command-toggle" for="useVisualSelectionCheckbox">
+              <input id="useVisualSelectionCheckbox" type="checkbox">
+              <span>Usar no comando</span>
+            </label>
+          </div>
+          <p id="visualCommandModeStatus" class="visual-command-mode-status">A seleção será usada no próximo comando. Desmarque para ignorar.</p>
+          <p class="visual-selection-help">Selecione imagens, textos, botões, ícones, cards, seções, headers ou containers. Para imagens, use “Ajustar” e “Aplicar posição”. O comando define o que será feito no elemento.</p>
+        </section>
+
+        <button id="sendAgentBtn" class="button primary full compact-primary">Enviar comando</button>
+      </section>
+
+      <section class="card compact-card project-actions-card">
+        <div class="compact-section-heading">
+          <h3>Projeto</h3>
+          <span id="previewLabel" class="micro-status">Preview parado.</span>
+        </div>
+        <div class="button-grid two compact-action-grid">
+          <button id="buildBtn" class="button">✓ Build</button>
+          <button id="pullBtn" class="button">↓ Atualizar</button>
+          <button id="previewStartBtn" class="button">▶ Preview</button>
+          <button id="showChangesBtn" class="button">Ver alterações</button>
+        </div>
+        <details class="inline-details">
+          <summary>Mais ações</summary>
+          <div class="button-grid two compact-action-grid details-actions">
+            <button id="previewOpenBtn" class="button">↗ Abrir preview</button>
+            <button id="previewStopBtn" class="button danger-soft">■ Parar preview</button>
+            <button id="syncLovableAssetsBtn" class="button">Sincronizar imagens</button>
+            <button id="openLovableBtn" class="button">Abrir Lovable</button>
+            <button id="linkLovableBtn" class="button">Vincular aba</button>
+          </div>
+          <p id="assetSyncLabel" class="hint compact-status-line">Verificando mídias do projeto...</p>
+        </details>
+      </section>
+
+      <section class="card publish-card compact-card compact-publish-card">
+        <div class="compact-section-heading"><h3>Publicar</h3><span class="micro-status">via GitHub</span></div>
+        <div class="publish-inline">
+          <input id="commitInput" class="input" maxlength="160" placeholder="Descrição da alteração">
+          <button id="commitPushBtn" type="button" class="button success">Enviar ao Lovable</button>
+        </div>
+      </section>
+
+      <details class="danger-zone compact-recovery">
+        <summary>Recuperação</summary>
+        <div class="button-grid two details-actions">
+          <button id="discardBtn" class="button danger">Descartar alterações</button>
+          <button id="removeProjectBtn" class="button danger-soft">Remover do perfil</button>
+        </div>
+      </details>
+    </section>
+
+    <section id="systemReadyCard" class="system-ready-card">
+      <span id="systemReadyDot" class="system-ready-dot"></span>
+      <div>
+        <strong id="systemReadyText">Verificando o Companion...</strong>
+        <p id="systemReadySubtext">A interface funcional aparece acima; os detalhes técnicos ficam recolhidos.</p>
+      </div>
+    </section>
+
+    <details id="systemDetails" class="system-details">
+      <summary>Configuração e diagnóstico</summary>
+      <div class="system-details-body">
+        <div class="button-grid two">
+          <button id="nativeConnectionBtn" class="button">Testar conexão</button>
+          <button id="nativeDiagnosticsBtn" class="button">Executar diagnóstico</button>
+        </div>
+        <pre id="nativeDiagnosticsOutput" class="native-diagnostics-output">Ainda não executado.</pre>
+      </div>
+    </details>
+
+    <section id="logCard" class="log-card">
+      <div class="section-header compact-header">
+        <h2>Resultado</h2>
+        <button id="clearLogBtn" class="text-button">Limpar</button>
+      </div>
+      <pre id="logOutput">Lovable Bridge 1.6.0</pre>
+    </section>
+  </main>
+
+  <div id="jobOverlay" class="overlay hidden">
+    <div class="job-box">
+      <div class="spinner"></div>
+      <h2 id="jobStage">Processando...</h2>
+      <div class="progress"><span id="jobProgress"></span></div>
+      <pre id="jobLog"></pre>
+      <button id="cancelJobBtn" class="button danger cancel-job-button hidden" type="button">Cancelar execução</button>
+    </div>
+  </div>
+
+  <div id="promptModal" class="overlay prompt-overlay hidden">
+    <div class="job-box prompt-box">
+      <div class="section-header">
+        <div>
+          <h2>Prompts salvos</h2>
+          <p>Clique para inserir no campo de comando.</p>
+        </div>
+        <button id="closePromptModalBtn" class="icon-button" type="button" aria-label="Fechar">×</button>
+      </div>
+      <input id="promptSearchInput" class="input" placeholder="Buscar prompt...">
+      <div id="promptTemplateList" class="prompt-template-list"></div>
+      <details class="prompt-create">
+        <summary>+ Criar novo prompt</summary>
+        <label>Nome</label>
+        <input id="newPromptName" class="input" maxlength="80" placeholder="Ex.: Trocar imagem da hero">
+        <label>Texto do prompt</label>
+        <textarea id="newPromptText" rows="6" placeholder="Escreva o comando que será reutilizado."></textarea>
+        <button id="savePromptTemplateBtn" class="button primary full" type="button">Salvar prompt</button>
+      </details>
+    </div>
+  </div>
+
+
+  <div id="changesModal" class="overlay changes-overlay hidden">
+    <div class="job-box changes-box">
+      <div class="section-header">
+        <div>
+          <h2>Alterações por comando</h2>
+          <p>Revise, refaça ou remova uma alteração antes de enviar ao Lovable.</p>
+        </div>
+        <button id="closeChangesModalBtn" class="icon-button" type="button" aria-label="Fechar">×</button>
+      </div>
+      <div id="changesNotice" class="history-notice hidden"></div>
+      <div id="commandHistoryList" class="command-history-list"></div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

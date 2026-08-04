@@ -1,0 +1,6 @@
+Caso o aplicativo e o arquivo .command nao abram:
+
+1. Abra o Terminal.
+2. Digite: bash 
+3. Arraste o arquivo apply-r22-macos.sh para a janela do Terminal.
+4. Pressione Enter.

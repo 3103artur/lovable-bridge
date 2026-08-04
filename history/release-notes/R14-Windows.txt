@@ -1,0 +1,15 @@
+LOVABLE BRIDGE v1.6.0 - HOTFIX R14
+
+CORRECAO:
+- O Codex passa a editar os arquivos atuais diretamente em sandbox gravavel.
+- O Patch Relay deixa de ser o fluxo principal e vira contingencia.
+- Safety Guard, build automatico, historico e rollback continuam ativos.
+- Corrige falhas do tipo "patch does not apply" em arquivos que mudaram ou foram reformatados.
+
+COMO APLICAR:
+1. Feche o painel lateral do Lovable Bridge.
+2. Extraia o ZIP inteiro.
+3. Execute APLICAR-HOTFIX-R14.cmd.
+4. Abra novamente o painel e repita o comando.
+
+Nao execute o Cleanup.

@@ -1,0 +1,13 @@
+{
+  "name": "lovable-bridge",
+  "private": true,
+  "version": "1.6.0",
+  "description": "Official private source repository for Lovable Bridge",
+  "scripts": {
+    "validate": "node scripts/validate-master.js",
+    "build": "node scripts/build-targets.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
