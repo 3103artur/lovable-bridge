@@ -1,0 +1,43 @@
+# Generated builds
+dist/
+
+# Dependencies and caches
+node_modules/
+.cache/
+.tmp/
+tmp/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+*token*
+
+# Runtime/user data
+profiles/
+projects/
+backups/
+logs/
+*.log
+*.bak
+*.backup
+
+# Packaged or compiled release assets
+*.zip
+*.7z
+*.rar
+*.dmg
+*.pkg
+*.msi
+*.exe
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
