@@ -1293,7 +1293,12 @@ async function recoverVisualPreviewAfterFailure() {
 
 async function validateVisualSelectionRoute({ silent = false } = {}) {
   if (!state.visualSelections.length) throw new Error(tx("Nenhum elemento está selecionado.", "No image is selected."));
-  const live = await sendVisualCommand({ type: "lb-visual-selection-get" });
+  let live = await sendVisualCommand({ type: "lb-visual-selection-get" });
+  const firstLiveCount = Array.isArray(live?.selections) ? live.selections.length : 0;
+  if (firstLiveCount === 0 && state.visualSelections.length > 0) {
+    await recoverVisualPreviewAfterFailure();
+    live = await sendVisualCommand({ type: "lb-visual-selection-get" });
+  }
   const selectedRoutes = [...new Set(state.visualSelections.map((item) => item.route).filter(Boolean))];
   const liveRoute = String(live?.route || "");
   const expectedRoute = selectedRoutes.length === 1 ? selectedRoutes[0] : "";
@@ -1393,8 +1398,11 @@ async function applyVisualPosition() {
     log(tx("Aplicar posição", "Apply position"), tx("Ative Mover no preview, use as setas ou marque um elemento para exclusão antes de aplicar.", "Enable Move in the preview, use the arrow keys, or mark an element for deletion before applying."));
     return;
   }
-  try { await runAgent(); }
-  finally { $("agentPrompt").value = previousPrompt; }
+  let completed = false;
+  try { completed = await runAgent(); }
+  finally {
+    if (!completed) $("agentPrompt").value = previousPrompt;
+  }
 }
 
 function renderCurrentProject() {
@@ -2049,6 +2057,7 @@ async function runAgent() {
     state.historyAttachments = [];
     renderMediaFiles();
     await clearEditDraft();
+    $("agentPrompt").value = "";
     if (useVisualSelection) await clearVisualSelections();
     await refreshCurrentProject();
     let previewWarning = "";
@@ -2068,6 +2077,7 @@ async function runAgent() {
         ? `${JSON.stringify(successContent, null, 2)}\n\n${previewWarning}`
         : successContent;
     log(successTitle, finalContent);
+    return true;
   } catch (error) {
     $("jobOverlay").classList.add("hidden");
     const label = state.engine === "opencode" ? tx("Erro do OpenCode", "OpenCode error") : (state.engine === "codex" ? tx("Erro do Codex", "Codex error") : tx("Erro do Antigravity", "Antigravity error"));
@@ -2080,6 +2090,7 @@ async function runAgent() {
         log(tx("Recuperação da seleção", "Selection recovery"), recoveryError.message);
       }
     }
+    return false;
   }
 }
 

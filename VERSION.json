@@ -1,21 +1,28 @@
 {
   "product": "Lovable Bridge",
   "codeVersion": "1.6.0",
-  "release": "R23",
-  "channel": "stable",
-  "baselineStatus": "windows-confirmed-working",
+  "release": "R24",
+  "channel": "stable-candidate",
+  "baselineStatus": "windows-hotfix-confirmed-working",
   "extensionManifestVersion": 3,
+  "extensionVersion": "1.6.24.0",
   "minimumChromeVersion": "120",
   "sourceLayout": "common-plus-platform-overlays",
   "platformReleases": {
+    "windows-x64": "R24",
+    "macos-x64": "R22",
+    "macos-arm64": "R22"
+  },
+  "companionReleases": {
     "windows-x64": "R23",
     "macos-x64": "R22",
     "macos-arm64": "R22"
   },
+  "officialChromeWebStoreId": "dgiofibjfadnnhlpjeaonajbhcaeamnf",
   "testedPackagesReported": [
-    "R23-Windows-Full-Installer",
-    "R23-Windows-SEO-Audit-Only-Fix"
+    "R24-Windows-Visual-Selection-Prompt-Fix-RC1"
   ],
-  "rollbackBaseline": "R22",
-  "notes": "R23 aprovada no Windows. macOS permanece na R22 ate validacao posterior. A extensao permanece compativel com a base R22; a mudanca R23 esta no Companion Windows."
+  "rollbackBaseline": "R23",
+  "preservesUserData": true,
+  "notes": "R24 atualiza a extensao no Windows; Companion Windows permanece R23. macOS permanece R22."
 }

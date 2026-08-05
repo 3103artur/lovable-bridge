@@ -16,6 +16,10 @@ const required = [
   "source/common/extension/content-script.css",
   "source/common/extension/preview-selector.js",
   "source/common/extension/preview-selector.css",
+  "source/common/extension/icons/icon16.png",
+  "source/common/extension/icons/icon32.png",
+  "source/common/extension/icons/icon48.png",
+  "source/common/extension/icons/icon128.png",
   "source/windows/extension/sidepanel.js",
   "source/windows/host/host.js",
   "source/macos/extension/sidepanel.js",
@@ -34,10 +38,11 @@ for (const rel of required) {
 
 try {
   const version = JSON.parse(fs.readFileSync(path.join(root, "VERSION.json"), "utf8"));
-  if (version.release !== "R23") throw new Error("release inesperada");
+  if (version.release !== "R24") throw new Error("release inesperada");
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "source/common/extension/manifest.json"), "utf8"));
   if (manifest.name !== "Lovable Bridge") throw new Error("nome inesperado");
-  if (manifest.version !== "1.6.0") throw new Error("versao inesperada");
+  if (manifest.key == null) throw new Error("chave oficial ausente");
+  if (manifest.version !== "1.6.24.0") throw new Error("versao inesperada");
   console.log(`[OK] Manifest: ${manifest.name} ${manifest.version}; release ${version.release}`);
 } catch (error) {
   console.error(`[ERRO] JSON invalido: ${error.message}`);
@@ -78,4 +83,4 @@ if (!macHost.includes('HOST_PLATFORM_BUILD = "R22-macOS"')) {
 }
 
 if (failed) process.exit(1);
-console.log("[OK] Estrutura da base R23 Windows / R22 macOS validada.");
+console.log("[OK] Estrutura da base R24 extension / R23 Windows Companion / R22 macOS validada.");

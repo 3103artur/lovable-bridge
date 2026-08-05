@@ -344,7 +344,7 @@ async function waitForTabComplete(tabId, timeoutMs = 30000) {
   });
 }
 
-const VISUAL_SELECTOR_VERSION = "1.6.0";
+const VISUAL_SELECTOR_VERSION = "1.6.0-R24";
 
 async function ensureVisualSelector(tabId) {
   const current = await chrome.scripting.executeScript({

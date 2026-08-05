@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Lovable Bridge",
-  "version": "1.6.0",
-  "description": "Edite projetos Lovable com Codex Business, Patch Normalizer, seleção universal de elementos, anexos interpretados pelo comando, preview auto-recuperável e build seguro.",
+  "version": "1.6.24.0",
+  "description": "Edite projetos Lovable com seleção visual, comandos inteligentes, anexos, preview local e build seguro.",
   "minimum_chrome_version": "120",
   "permissions": [
     "activeTab",
@@ -22,7 +22,13 @@
     "service_worker": "service-worker.js"
   },
   "action": {
-    "default_title": "Abrir Lovable Bridge"
+    "default_title": "Abrir Lovable Bridge",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   },
   "side_panel": {
     "default_path": "sidepanel.html"
@@ -46,5 +52,12 @@
     "https://*/*",
     "http://*/*"
   ],
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtddk44o/w7mDgUatJgVcgVgrmiZXnIDS0OuPo6kDncchTF2xrVFK1d7hIFF2dwmmgq89jUzy3vJ5CmOIHOK2VOf35/n9iL0Bm0hpfPv0s5YapAaLBZw2dB3L6+PWG8GH255Vu8DoEXIVa+7oxDbu1+A+EVpeJjd2dG5Xd/tmp+Sw6VfszHp2+4K3Shb793oGC8pv/ec/Agtwrg7IXdLGRuVNRTBUz3GRY3GzSBHytCQ6llXcxFkbPId8hFbohnwIwMa4XkABfC3Ew7uk7fjQ9RgP+XTycm/vZRuqefbKdWoQQJgEOiXo65an99wWP2CPbWt9P+bxk6e9Ca5GToH9rwIDAQAB"
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAw9E/vryAO4ptGuWqqr2O2tOHPMjUVm+OwsJZXGdsm4uJM/3eLVBpO5H4VKS280ccqBe5/zFTv98dJnEhOaOWwzDcdeRrOQRjc5t/3Jtdv7yY4TXMNF3/glzYyO+GSCB7RKOk1tl9lcYexCY9e8mReetyy98bdhT8GAYH0pTz8WClY5By2YcFsol+jcI1l0QM9NwPy3ZIqbxl69mYCRWAH4hS8xUjG2GtH41WI7mCJYtWd6vYFS773uA0BguceERgPs2WcaOf2vRT8lUVdyVX4Jnllr7OQdif+bVaKoao+73G75plBM05iT7DGvKo1A9nw1OarbMWtwlUw7XL8JI/hwIDAQAB",
+  "version_name": "1.6.0 R24 RC1",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }

@@ -1,0 +1,7 @@
+R24 Windows
+
+- Corrige a sincronizacao da selecao visual entre preview e painel.
+- Impede recarga indevida durante validacao.
+- Limpa o campo do comando apenas apos conclusao com sucesso.
+- Adota versao da extensao 1.6.24.0 e o ID oficial da Chrome Web Store.
+- Companion Windows permanece R23.

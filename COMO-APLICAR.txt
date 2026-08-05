@@ -1,8 +1,4 @@
-1. Abra a pasta local do repositorio lovable-bridge.
-2. Copie TODO o conteudo desta pasta para a raiz do repositorio.
-3. Confirme a substituicao dos arquivos existentes.
-4. Abra o GitHub Desktop.
-5. Confira as alteracoes antes do commit.
-
-Este pacote atualiza somente a fonte e a documentacao do repositorio.
-Ele nao instala nem atualiza o Lovable Bridge no computador.
+Copie o conteudo interno desta pasta para a raiz do repositorio local lovable-bridge.
+Confirme a substituicao.
+Depois faça commit e push pelo GitHub Desktop.
+Nenhum ZIP ou EXE deve ser enviado ao historico do Git.

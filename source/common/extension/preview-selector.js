@@ -1,7 +1,7 @@
 "use strict";
 
 (() => {
-  if (window.__lovableBridgeVisualSelector?.version === "1.6.0-R20") return;
+  if (window.__lovableBridgeVisualSelector?.version === "1.6.0-R24") return;
 
   const MAX_SELECTIONS = 10;
   const ROOT_ID = "lb-visual-selector-root";
@@ -15,7 +15,7 @@
   const DELETE_CLASS = "lb-visual-delete-pending";
 
   const state = {
-    version: "1.6.0-R20",
+    version: "1.6.0-R24",
     active: false,
     locked: false,
     projectKey: "",
@@ -1175,5 +1175,5 @@
     }
   }, 500);
 
-  window.__lovableBridgeVisualSelector = { version: "1.6.0-R20", enable, disable, clearSelections, editByKey, state };
+  window.__lovableBridgeVisualSelector = { version: "1.6.0-R24", enable, disable, clearSelections, editByKey, state };
 })();
