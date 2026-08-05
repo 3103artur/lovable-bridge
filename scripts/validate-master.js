@@ -34,7 +34,7 @@ for (const rel of required) {
 
 try {
   const version = JSON.parse(fs.readFileSync(path.join(root, "VERSION.json"), "utf8"));
-  if (version.release !== "R22") throw new Error("release inesperada");
+  if (version.release !== "R23") throw new Error("release inesperada");
   const manifest = JSON.parse(fs.readFileSync(path.join(root, "source/common/extension/manifest.json"), "utf8"));
   if (manifest.name !== "Lovable Bridge") throw new Error("nome inesperado");
   if (manifest.version !== "1.6.0") throw new Error("versao inesperada");
@@ -68,8 +68,8 @@ try {
 
 const winHost = fs.readFileSync(path.join(root, "source/windows/host/host.js"), "utf8");
 const macHost = fs.readFileSync(path.join(root, "source/macos/host/host.js"), "utf8");
-if (!winHost.includes('HOST_PLATFORM_BUILD = "R22-Windows"')) {
-  console.error("[ERRO] host Windows sem identificacao R22-Windows");
+if (!winHost.includes('HOST_PLATFORM_BUILD = "R23-Windows"')) {
+  console.error("[ERRO] host Windows sem identificacao R23-Windows");
   failed = true;
 }
 if (!macHost.includes('HOST_PLATFORM_BUILD = "R22-macOS"')) {
@@ -78,4 +78,4 @@ if (!macHost.includes('HOST_PLATFORM_BUILD = "R22-macOS"')) {
 }
 
 if (failed) process.exit(1);
-console.log("[OK] Estrutura da base Master R22 validada.");
+console.log("[OK] Estrutura da base R23 Windows / R22 macOS validada.");

@@ -1,0 +1,16 @@
+LOVABLE BRIDGE 1.6.0 R23 - WINDOWS
+
+Correcao principal
+- Pedidos de auditoria SEO permanecem em modo somente leitura.
+- Frases consultivas como "suggest the correct destination" nao sao interpretadas como ordem para editar o projeto.
+- O resultado da auditoria deve ser exibido apenas no painel Resultado.
+- Nao devem ser criados SEO_LINK_AUDIT.md, AUDIT.md, REPORT.md ou arquivos semelhantes.
+
+Validacao
+- Hotfix testado no computador do Mohit.
+- Instalador completo testado do zero em dois computadores Windows.
+- Companion 1.6.0 R23 conectado e recursos confirmados.
+
+Compatibilidade
+- Windows 10/11 x64 como alvo do pacote.
+- macOS permanece na R22 ate validacao posterior.

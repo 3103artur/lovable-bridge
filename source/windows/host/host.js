@@ -26,7 +26,7 @@ const SYSTEM32_DIR = IS_WINDOWS ? path.join(SYSTEM_ROOT, "System32") : "/usr/bin
 const EXPLORER_EXE = IS_WINDOWS ? path.join(SYSTEM_ROOT, "explorer.exe") : "/usr/bin/open";
 const CMD_EXE = IS_WINDOWS ? path.join(SYSTEM32_DIR, "cmd.exe") : null;
 const TASKKILL_EXE = IS_WINDOWS ? path.join(SYSTEM32_DIR, "taskkill.exe") : null;
-const HOST_PLATFORM_BUILD = "R22-Windows";
+const HOST_PLATFORM_BUILD = "R23-Windows";
 const MEDIA_LIMIT = 10;
 const MAX_MEDIA_BYTES = 150 * 1024 * 1024;
 const ALLOWED_MEDIA_EXTENSIONS = new Set([
@@ -1382,9 +1382,16 @@ function normalizeWorkMode(value) {
 
 function auditOnlyPrompt(prompt) {
   const value = normalizeSafetyText(prompt);
-  const auditVerb = /\b(audit|review|analy[sz]e|find|identify|check|inspect|list|report|scan|crawl|verifique|revise|analise|encontre|identifique|liste|audite)\b/i.test(value);
-  const editVerb = /\b(fix|correct|change|replace|rewrite|add|implement|create|remove|delete|optimi[sz]e|update|configure|connect|set up|corrija|altere|substitua|reescreva|adicione|implemente|crie|remova|exclua|otimize|atualize|configure|conecte)\b/i.test(value);
-  return auditVerb && !editVerb;
+  const auditVerb = /\b(audit|review|analy[sz]e|find|identify|check|inspect|list|report|scan|crawl|suggest|recommend|verifique|revise|analise|encontre|identifique|liste|audite|sugira|recomende)\b/i.test(value);
+  // English “correct” is often an adjective in audit requests, for example
+  // “suggest the correct destination”. Treat it as an edit instruction only
+  // when it is used as an explicit imperative against a concrete target.
+  const explicitEditVerb = /\b(fix|change|replace|rewrite|add|implement|create|remove|delete|optimi[sz]e|update|configure|connect|set up|apply|corrija|altere|substitua|reescreva|adicione|implemente|crie|remova|exclua|otimize|atualize|configure|conecte|aplique)\b/i.test(value);
+  const explicitCorrectCommand = /\bcorrect\s+(?:the|all|these|those|each|every|broken|invalid|incorrect|wrong|missing|duplicate|existing|current)\b/i.test(value);
+  const advisoryLanguage = /\b(suggest|recommend|proposal|propose|whether|should be|could be|destination|findings?|report|sugira|recomende|deveria|destino|relatorio)\b/i.test(value);
+  if (!auditVerb) return false;
+  if (explicitEditVerb || explicitCorrectCommand) return false;
+  return auditVerb || advisoryLanguage;
 }
 
 function inferWorkMode(prompt, requestedMode = "auto") {
@@ -1416,7 +1423,7 @@ function workModePromptLines(prompt, requestedMode = "auto") {
     `LOVABLE BRIDGE WORK MODE: ${mode.toUpperCase()}.`,
     "Never access files outside the active project, never use Git, never commit or push, and never expose credentials or secret values.",
     "Do not edit real .env files. When configuration is needed, create or update only .env.example/.env.sample with empty or clearly fake placeholder values.",
-    "Do not modify package.json, lockfiles, deployment configuration, or install dependencies in this R22 workflow.",
+    "Do not modify package.json, lockfiles, deployment configuration, or install dependencies in this R23 workflow.",
     "Do not execute database migrations or contact production services. You may create migration files for later review only when explicitly requested."
   ];
   if (mode === "seo") {
@@ -4340,7 +4347,7 @@ function buildCodexPatchPrompt(userPrompt, media, workMode = "auto") {
       ]
     : [];
   return [
-    "LOVABLE BRIDGE 1.6.0 R22 — CONTRATO FIXO DE EDIÇÃO",
+    "LOVABLE BRIDGE 1.6.0 R23 — CONTRATO FIXO DE EDIÇÃO",
     "Você está analisando um projeto Lovable existente no Windows.",
     ...workModePromptLines(userPrompt, workMode),
     "Trabalhe somente dentro do projeto atual.",
@@ -4484,7 +4491,7 @@ function buildCodexPrimaryDirectEditPrompt(userPrompt, media, workMode = "auto")
       ]
     : [];
   return [
-    "LOVABLE BRIDGE 1.6.0 R22 — EDIÇÃO DIRETA + FALLBACK DE SANDBOX",
+    "LOVABLE BRIDGE 1.6.0 R23 — EDIÇÃO DIRETA + FALLBACK DE SANDBOX",
     ...workModePromptLines(userPrompt, workMode),
     "Você está em um sandbox gravável cuja raiz é exatamente o projeto atual.",
     "Leia os arquivos atuais antes de editar. Não gere um patch para ser aplicado externamente.",
@@ -4515,7 +4522,7 @@ function buildCodexDirectEditPrompt(userPrompt, media, gitError, workMode = "aut
       ]
     : [];
   return [
-    "LOVABLE BRIDGE 1.6.0 R22 — EDIÇÃO DIRETA SEGURA DE CONTINGÊNCIA",
+    "LOVABLE BRIDGE 1.6.0 R23 — EDIÇÃO DIRETA SEGURA DE CONTINGÊNCIA",
     ...workModePromptLines(userPrompt, workMode),
     "Você está em um sandbox gravável cuja raiz é exatamente o projeto atual.",
     "O relay de patch externo falhou por incompatibilidade de contexto. Agora edite os arquivos reais diretamente.",
@@ -4670,6 +4677,7 @@ function buildCodexAuditPrompt(userPrompt, workMode = "seo") {
     "You are operating in AUDIT-ONLY mode for the active Lovable Bridge project.",
     ...workModePromptLines(userPrompt, workMode),
     "Read and search the project as needed, but do not output a unified diff and do not modify, create, rename, or delete files.",
+    "Return the audit only in your final agent response. Never create SEO_LINK_AUDIT.md, AUDIT.md, REPORT.md, or any other report/documentation file inside the project.",
     "Return a concise structured report with: scope checked, findings, affected routes/files, severity, evidence, and recommended next action.",
     "Clearly distinguish what was verified from source code/local preview and what still requires production, DNS, analytics, email-provider, or external-service verification.",
     "USER REQUEST:",
@@ -4826,8 +4834,8 @@ async function runCodexEdit(settings, profile, project, userPrompt, attachments,
     const usageLine = codexUsageSummary(usage);
     const agentSummary = [
       patchResult.directEdited
-        ? "Alteração concluída com Codex Business pelo modo de contingência R22."
-        : "Alteração concluída com Codex Business pelo Patch Relay seguro R22.",
+        ? "Alteração concluída com Codex Business pelo modo de contingência R23."
+        : "Alteração concluída com Codex Business pelo Patch Relay seguro R23.",
       `Modo de trabalho: ${workModeLabel(workMode)}.`,
       `Modelo utilizado: ${modelDecision.model}.`,
       modelDecision.reason,
@@ -5337,7 +5345,7 @@ async function cacheLovableAsset(project, req) {
 
 
 
-const HOST_VERSION = "1.6.0 R22";
+const HOST_VERSION = "1.6.0 R23";
 const EXTENSION_ID = "jfnajhhcpdepijomgiiiflmphgcohmgm";
 const uploadSessions = new Map();
 

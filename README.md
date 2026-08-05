@@ -5,10 +5,11 @@ Repositório privado oficial do Lovable Bridge.
 ## Base atual
 
 - Código: `1.6.0`
-- Release: `R22`
-- Status: base confirmada como funcional
-- Rollback preservado fora deste repositório: `R21`
-- Alvos: Windows x64, macOS Intel e macOS Apple Silicon
+- Release geral: `R23`
+- Windows x64: `R23`, testada e aprovada
+- macOS Intel e Apple Silicon: `R22`, preservada até nova validação
+- Extensão: base R22 compatível; a correção R23 está no Companion do Windows
+- Rollback preservado: `R22`
 
 ## Estrutura
 
@@ -48,4 +49,4 @@ Não enviar para este repositório:
 - logs contendo dados pessoais;
 - pacotes ZIP, EXE, MSI, DMG ou PKG.
 
-Pacotes compilados e instaladores devem ser publicados futuramente como assets de **GitHub Releases**, e não no histórico principal do Git.
+Pacotes compilados e instaladores devem ser publicados como assets de **GitHub Releases**, e não no histórico principal do Git.

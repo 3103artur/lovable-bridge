@@ -1,21 +1,21 @@
 {
   "product": "Lovable Bridge",
   "codeVersion": "1.6.0",
-  "release": "R22",
-  "channel": "master-snapshot",
-  "baselineStatus": "user-confirmed-working",
+  "release": "R23",
+  "channel": "stable",
+  "baselineStatus": "windows-confirmed-working",
   "extensionManifestVersion": 3,
   "minimumChromeVersion": "120",
   "sourceLayout": "common-plus-platform-overlays",
-  "supportedTargets": [
-    "windows-x64",
-    "macos-x64",
-    "macos-arm64"
-  ],
+  "platformReleases": {
+    "windows-x64": "R23",
+    "macos-x64": "R22",
+    "macos-arm64": "R22"
+  },
   "testedPackagesReported": [
-    "R22-Windows-Language-Smart-Routing-Technical-Ops",
-    "R22-macOS-Language-Smart-Routing-Technical-Ops"
+    "R23-Windows-Full-Installer",
+    "R23-Windows-SEO-Audit-Only-Fix"
   ],
-  "rollbackBaseline": "R21",
-  "notes": "Fonte oficial congelada da R22 antes da criacao do repositorio e do sistema de atualizacao remota. Nao e um instalador."
+  "rollbackBaseline": "R22",
+  "notes": "R23 aprovada no Windows. macOS permanece na R22 ate validacao posterior. A extensao permanece compativel com a base R22; a mudanca R23 esta no Companion Windows."
 }
